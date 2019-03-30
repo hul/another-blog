@@ -35,3 +35,4 @@ const rootReducer = combineReducers({
 export const store = createStore(rootReducer, composeWithDevTools());
 
 store.dispatch(newPost({ title: 'Post Na Dobry Początek', text: 'Treść posta pierwszego...' }));
+store.dispatch(newPost({ title: 'Post Drugi', text: 'Treść posta drugiego...' }));
