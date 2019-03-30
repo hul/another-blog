@@ -3,27 +3,36 @@ import { reduxForm, Field } from "redux-form";
 
 const createInput = render => ({ input, meta, label }) => (
   <div className="FormField-input">
-    <label>{ label }</label>
+    <label>{label}</label>
     {render(input)}
-    {meta.error && meta.touched && <span className="FormField-error">{meta.error}</span>}
+    {meta.error && meta.touched && (
+      <span className="FormField-error">{meta.error}</span>
+    )}
   </div>
 );
 
-const InputField = createInput(input => (
-  <input {...input}></input>
-));
+const InputField = createInput(input => <input {...input} />);
 
-const TextAreaField = createInput(input => (
-  <textarea {...input}></textarea>
-));
+const TextAreaField = createInput(input => <textarea {...input} />);
 
-let PostForm = ({ handleSubmit }) => (
-  <form onSubmit={handleSubmit}>
-    <Field name="title" component={InputField} />
-    <Field name="text" component={TextAreaField} />
-    <button type="submit">Zapisz</button>
-  </form>
-);
+class PostForm extends React.Component {
+  componentDidMount() {
+    const { initialize, post } = this.props;
+    initialize(post);
+    console.log(post, initialize, this.props);
+  }
+
+  render() {
+    const { handleSubmit } = this.props;
+    return (
+      <form onSubmit={handleSubmit}>
+        <Field name="title" component={InputField} />
+        <Field name="text" component={TextAreaField} />
+        <button type="submit">Zapisz</button>
+      </form>
+    );
+  }
+}
 
 const validate = values => {
   const errors = {};
@@ -34,12 +43,17 @@ const validate = values => {
     errors.text = "Brak tekstu!";
   }
   return errors;
-}
+};
+
+const onSubmit = (values, dispatch, { newPost, editPost, history, post }) => {
+  post ? editPost(values) : newPost(values);
+  history.push("/posts");
+};
 
 PostForm = reduxForm({
-  form: 'post',
+  form: "post",
   validate,
-  onSubmit: values => console.log(values)
+  onSubmit
 })(PostForm);
 
 export { PostForm };

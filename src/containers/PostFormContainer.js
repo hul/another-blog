@@ -2,7 +2,9 @@ import { connect } from "react-redux";
 import { newPost, editPost } from "../store";
 import { PostForm } from "../components/PostForm";
 
-const mapStateToProps = () => ({});
+const mapStateToProps = (state, ownProps) => ({
+  post: state.posts.find(post => post.id.toString() === ownProps.match.params.id)
+});
 
 const mapDispatchToProps = dispatch => ({
   newPost: post => dispatch(newPost(post)),

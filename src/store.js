@@ -20,7 +20,7 @@ const postsReducer = (state = [], action) => {
       return [...state, { ...action.payload, id: postNum++ }];
     case 'EDIT':
       return state.map(post => {
-        return post.id.toString() === action.payload.id ? action.payload : post;
+        return post.id === action.payload.id ? action.payload : post;
       });
     default:
       return state;
