@@ -8,12 +8,15 @@ import { NotFound } from "./components/NotFound";
 import { Home } from "./components/Home";
 import PostsListContainer from "./containers/PostsListContainer";
 import PostContainer from "./containers/PostContainer";
-import PostFormContainer from "./containers/PostFormContainer";
+import "./icons";
+import { EditPost } from "./components/EditPost";
+import { NewPost } from "./components/NewPost";
+
 
 const Posts = ({ match }) => (
   <Switch>
-    <Route path={`${match.url}/new`} component={PostFormContainer} />
-    <Route path={`${match.url}/:id/edit`} component={PostFormContainer} />
+    <Route path={`${match.url}/new`} component={EditPost} />
+    <Route path={`${match.url}/:id/edit`} component={NewPost} />
     <Route path={`${match.url}/:id`} component={PostContainer} />
     <Route path={`${match.url}`} component={PostsListContainer} />
   </Switch>
