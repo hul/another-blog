@@ -9,6 +9,7 @@ import { Home } from "./components/Home";
 import PostsListContainer from "./containers/PostsListContainer";
 import PostContainer from "./containers/PostContainer";
 import PostFormContainer from "./containers/PostFormContainer";
+import "./icons";
 
 const Posts = ({ match }) => (
   <Switch>

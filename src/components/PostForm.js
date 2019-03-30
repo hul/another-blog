@@ -1,5 +1,6 @@
 import React from "react";
 import { reduxForm, Field } from "redux-form";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const createInput = render => ({ input, meta, label }) => (
   <div className="FormField-input">
@@ -28,7 +29,7 @@ class PostForm extends React.Component {
       <form onSubmit={handleSubmit}>
         <Field name="title" component={InputField} />
         <Field name="text" component={TextAreaField} />
-        <button type="submit">Zapisz</button>
+        <button type="submit">Zapisz{' '}<FontAwesomeIcon icon="save" /></button>
       </form>
     );
   }
