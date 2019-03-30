@@ -32,5 +32,6 @@ nav li {
 }
 
 .FormField-error {
+  margin-left: 8px;
   color: red;
 }
