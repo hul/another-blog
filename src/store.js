@@ -1,5 +1,6 @@
 import { combineReducers, createStore } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
+import { reducer as formReducer } from "redux-form";
 
 let postNum = 1;
 
@@ -27,7 +28,8 @@ const postsReducer = (state = [], action) => {
 };
 
 const rootReducer = combineReducers({
-  posts: postsReducer
+  posts: postsReducer,
+  form: formReducer
 });
 
 export const store = createStore(rootReducer, composeWithDevTools());

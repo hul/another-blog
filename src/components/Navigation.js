@@ -1,13 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export const Navigation = () => (
   <header>
-    <h1>Kolejny Blog</h1>
+    <h1><FontAwesomeIcon icon={'coffee'}/> Kolejny Blog</h1>
     <nav>
       <ul>
-        <li>Start</li>
-        <li>Posty</li>
-        <li>Dodaj nowy post</li>
+        <li><Link to="/">Start</Link></li>
+        <li><Link to="/posts">Posty</Link></li>
+        <li><Link to="/posts/new">Dodaj nowy post</Link></li>
       </ul>
     </nav>
   </header>
